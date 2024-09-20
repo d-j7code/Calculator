@@ -3,10 +3,11 @@ import tkinter as tk
 class Calculator:
     def __init__(self, master):
         self.master = master
-        master.title("Python Calculator")
+        master.title("Premium Python Calculator")
+        master.configure(bg='#2c3e50')
 
-        self.result = tk.Entry(master, width=16, font=('Arial', 24), borderwidth=2, relief="solid")
-        self.result.grid(row=0, column=0, columnspan=4)
+        self.result = tk.Entry(master, width=16, font=('Arial', 24), borderwidth=2, relief="solid", bg='#ecf0f1', fg='#2c3e50')
+        self.result.grid(row=0, column=0, columnspan=4, pady=10)
 
         buttons = [
             '7', '8', '9', '/',
@@ -19,13 +20,13 @@ class Calculator:
         col = 0
         for button in buttons:
             action = lambda x=button: self.click_event(x)
-            tk.Button(master, text=button, width=5, height=2, command=action).grid(row=row, column=col)
+            tk.Button(master, text=button, width=5, height=2, command=action, font=('Arial', 18), bg='#34495e', fg='#ecf0f1', activebackground='#16a085', activeforeground='#ecf0f1').grid(row=row, column=col, padx=5, pady=5)
             col += 1
             if col > 3:
                 col = 0
                 row += 1
 
-        tk.Button(master, text='C', width=5, height=2, command=self.clear).grid(row=row, column=0, columnspan=4)
+        tk.Button(master, text='C', width=22, height=2, command=self.clear, font=('Arial', 18), bg='#e74c3c', fg='#ecf0f1', activebackground='#c0392b', activeforeground='#ecf0f1').grid(row=row, column=0, columnspan=4, pady=5)
 
     def click_event(self, key):
         if key == '=':
